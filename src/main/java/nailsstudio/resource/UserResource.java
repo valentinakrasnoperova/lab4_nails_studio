@@ -67,43 +67,5 @@ Postman
     PUT - оновлює повністю один ресурс
     PATCH - оновлює частково один ресурс
     DELETE - видалити один або багато ресурсів
-    {
-        "id" : 3
-        "name" : "Anna",
-        "surname" : "Sedakova",
-        "email" : "sedak@gmail.com"
-    }
-     + by PUT
-    {
-        "id" : 8
-        "name" : "123",
-        "surname" : "456"
-    }
-    =
-     {
-        "id" : 8
-        "name" : "123",
-        "surname" : "456",
-        "email" : null
-    }
-    ==========================================
-       {
-        "id" : 8
-        "name" : "N",
-        "surname" : "S",
-        "email" : "E@E"
-    }
-     + by PATCH
-    {
-        "id" : 8
-        "name" : "123",
-        "surname" : "456"
-    }
-    =
-     {
-        "id" : 8
-        "name" : "123",
-        "surname" : "456",
-        "email" : "E@E"
-    }
+
  */
