@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserToUserDTOMapper userMapper;
+    final private UserToUserDTOMapper userMapper;
 
-    private UserRepository userRepository;
+    final private UserRepository userRepository;
 
     public UserServiceImpl(final UserToUserDTOMapper userMapper, final UserRepository userRepository) {
         this.userMapper = userMapper;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> getAllUsers() {
         return userRepository.getAllUsers().stream()
-                .map(e -> userMapper.toDTO(e))
+                .map(userMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
