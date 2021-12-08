@@ -32,9 +32,7 @@ public class OrderToOrderMapper {
         order.setUser(userMapper.toEntity(orderDTO.getUser()));
         order.setServiceDetails(serviceDetailsMapper.toEntity(orderDTO.getServiceDetails()));
 
-        order.setServiceMap(orderDTO.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> {
-            return serviceRepository.getServiceById(e.getKey());
-        }, Map.Entry::getValue)));
+      //  orderDTO.setServiceMap(orderDTO.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getId(), Map.Entry::getValue)));
 
 
         return order;
@@ -48,8 +46,7 @@ public class OrderToOrderMapper {
         orderDTO.setTotalPrice(order.getTotalPrice());
 
         orderDTO.setUser(userMapper.toDTO(order.getUser()));
-        orderDTO.setServiceDetails(serviceDetailsMapper.toDTO(order.getServiceDetails()));
-      //  orderDTO.getServiceMap(order.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getId(), Map.Entry::getValue)));
+        orderDTO.setServiceMap(order.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getId(), Map.Entry::getValue)));
 
         return orderDTO;
     }

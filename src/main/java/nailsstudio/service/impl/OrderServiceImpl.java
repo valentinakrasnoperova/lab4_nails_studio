@@ -5,22 +5,19 @@ import nailsstudio.entity.Order;
 import nailsstudio.mapper.OrderToOrderMapper;
 import nailsstudio.repository.OrderRepository;
 import nailsstudio.service.OrderService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private OrderRepository orderRepository;
+    final private OrderRepository orderRepository;
 
-    private OrderToOrderMapper orderMapper;
+    final private OrderToOrderMapper orderMapper;
 
-    @Value("${limit}")
-    private int limit;
+
 
     public OrderServiceImpl(final OrderRepository orderRepository, final OrderToOrderMapper orderMapper) {
         this.orderRepository = orderRepository;
@@ -59,15 +56,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrderById(final long id) {
         orderRepository.deleteOrderById(id);
-    }
-
-
-    @Override
-    public double getTotalPriceForPeriod(final LocalDateTime start, final LocalDateTime end) {
-        return orderRepository.getAllOrders().stream()
-                .filter(e -> e.getOrderTime().isAfter(start) && e.getOrderTime().isBefore(end))
-                .mapToDouble(Order::getTotalPrice)
-                .sum();
     }
 
 }
