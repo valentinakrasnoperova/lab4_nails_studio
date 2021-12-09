@@ -40,7 +40,7 @@ public class OrderRepository {
         final Order savedOrder = getOrderById(order.getId());
 
         savedOrder.setTotalPrice(order.getTotalPrice());
-        savedOrder.setServiceMap(order.getServiceMap());
+        savedOrder.setAdditionalServices(order.getAdditionalServices());
         savedOrder.setServiceDetails(order.getServiceDetails());
         savedOrder.setOrderTime(order.getOrderTime());
         savedOrder.setUser(order.getUser());
