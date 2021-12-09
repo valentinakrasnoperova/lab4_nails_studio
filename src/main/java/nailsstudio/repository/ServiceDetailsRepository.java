@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class ServiceDetailsRepository {
-    private List<ServiceDetails> serviceDetailsList;
+    private final List<ServiceDetails> serviceDetailsList = new ArrayList<>();
 
     private long id = 1;
 
@@ -50,9 +50,7 @@ public class ServiceDetailsRepository {
 
     public ServiceDetails saveServiceDetails(final ServiceDetails serviceDetails) {
         serviceDetails.setId(id);
-
         ++id;
-
         serviceDetailsList.add(serviceDetails);
         return serviceDetails;
     }

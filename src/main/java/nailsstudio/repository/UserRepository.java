@@ -1,17 +1,9 @@
 package nailsstudio.repository;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import nailsstudio.entity.User;
 import nailsstudio.exception.ServiceException;
-import nailsstudio.util.JacksonUtil;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class UserRepository {
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     private long id = 1;
 

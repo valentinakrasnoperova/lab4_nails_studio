@@ -28,10 +28,10 @@ public class ManagerServiceImpl implements ManagerService {
         final ServiceDetails serviceDetails = serviceDetailsRepository.getServiceDetailsById(sdId);
 
         if(serviceDetails.getServiceType() != ServiceType.ACTIVE){
-            throw new ServiceException(400, "Fuel should be in active state", "Current state: " + serviceDetails.getServiceType());
+            throw new ServiceException(400, "Service should be in active state", "Current state: " + serviceDetails.getServiceType());
         }
 
-        serviceDetails.setServiceType(ServiceType.DELETED.NOT_ACTIVE);
+        serviceDetails.setServiceType(ServiceType.NOT_ACTIVE);
 
         serviceDetailsRepository.updateServiceDetails(serviceDetails);
     }
