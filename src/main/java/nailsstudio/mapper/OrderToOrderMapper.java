@@ -32,8 +32,7 @@ public class OrderToOrderMapper {
         order.setUser(userMapper.toEntity(orderDTO.getUser()));
         order.setServiceDetails(serviceDetailsMapper.toEntity(orderDTO.getServiceDetails()));
 
-      //  orderDTO.setServiceMap(orderDTO.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getId(), Map.Entry::getValue)));
-
+        order.setServiceMap(orderDTO.getServiceMap().entrySet().stream().collect(Collectors.toMap(e -> ServiceRepository.getServiceById(e.getKey()), Map.Entry::getValue)));
 
         return order;
     }
